@@ -26,13 +26,17 @@ import Card from "./Card";
     setCurrCardIdx(currCardIdx + 1);
   }
 
+  function goBack() {
+    setCurrCardIdx(currCardIdx - 1);
+  }
+
   return (
     <div className="Carousel">
       <h1>{title}</h1>
       <div className="Carousel-main">
-        <i
-          className="fas fa-chevron-circle-left fa-2x"
-          onClick={goForward}
+         <i
+          className={(currCardIdx > 0) ? "fas fa-chevron-circle-left fa-2x" : "fas hidden fa-chevron-circle-left fa-2x"}
+          onClick={goBack}
         />
         <Card
           caption={currCard.caption}
@@ -41,7 +45,7 @@ import Card from "./Card";
           totalNum={total}
         />
         <i
-          className="fas fa-chevron-circle-right fa-2x"
+          className={(currCardIdx < total - 1) ? "fas fa-chevron-circle-right fa-2x" : "fas hidden fa-chevron-circle-right fa-2x"}
           onClick={goForward}
         />
       </div>
